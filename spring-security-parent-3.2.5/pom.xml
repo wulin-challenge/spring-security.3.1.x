@@ -1,0 +1,17 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.springframework.security</groupId>
+  <artifactId>spring-security-parent-3.2.5</artifactId>
+  <version>3.2.5-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <modules>
+  	<module>spring-security-config</module>
+  	<module>spring-security-core</module>
+  	<module>spring-security-web</module>
+  	<module>spring-security-crypto</module>
+  	<module>spring-security-ldap</module>
+  	<module>spring-security-cas</module>
+  	<module>spring-security-openid</module>
+  	<module>spring-security-aspects</module>
+  </modules>
+</project>

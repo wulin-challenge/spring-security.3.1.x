@@ -1,0 +1,20 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.springframework.security.oauth</groupId>
+  <artifactId>spring-security-oauth-parent-2.0.5</artifactId>
+  <version>2.0.5-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <description>security oauth的的父亲工程,版本2.0.5</description>
+  
+   <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <spring.version>3.2.12-SNAPSHOT</spring.version>
+    <spring.test.version>3.2.8.RELEASE</spring.test.version>
+    <spring.security.version>3.2.5-SNAPSHOT</spring.security.version>
+  </properties>
+  
+  <modules>
+  	<module>spring-security-oauth</module>
+  	<module>spring-security-oauth2</module>
+  </modules>
+</project>
