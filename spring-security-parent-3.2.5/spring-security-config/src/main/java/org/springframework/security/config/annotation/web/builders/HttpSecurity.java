@@ -1192,7 +1192,7 @@ public final class HttpSecurity extends AbstractConfiguredSecurityBuilder<Defaul
 
     @Override
     protected DefaultSecurityFilterChain performBuild() throws Exception {
-        Collections.sort(filters,comparitor);
+        Collections.sort(filters,comparitor);//对filter进行配置,配置规则请见 comparitor,该类是 FilterComparator
         return new DefaultSecurityFilterChain(requestMatcher, filters);
     }
 
@@ -1242,7 +1242,7 @@ public final class HttpSecurity extends AbstractConfiguredSecurityBuilder<Defaul
                     "The Filter class " + filterClass.getName()
                             + " does not have a registered order and cannot be added without a specified order. Consider using addFilterBefore or addFilterAfter instead.");
         }
-        this.filters.add(filter);
+        this.filters.add(filter);//想filters列表中添加filter
         return this;
     }
 

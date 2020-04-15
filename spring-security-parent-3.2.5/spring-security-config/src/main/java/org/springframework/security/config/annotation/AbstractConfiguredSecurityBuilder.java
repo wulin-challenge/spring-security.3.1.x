@@ -399,21 +399,21 @@ public abstract class AbstractConfiguredSecurityBuilder<O, B extends SecurityBui
     @Override
     protected final O doBuild() throws Exception {
         synchronized(configurers) {
-            buildState = BuildState.INITIALIZING;
+            buildState = BuildState.INITIALIZING; //构建状态,表示是初始化阶段
 
-            beforeInit();
-            init();
+            beforeInit(); //初始化前用户可以通过继承的方式实现一些自定义的逻辑
+            init(); //步骤一: 初始化
 
-            buildState = BuildState.CONFIGURING;
+            buildState = BuildState.CONFIGURING; //构建状态,表示是配置阶段
 
-            beforeConfigure();
-            configure();
+            beforeConfigure(); // 在配置之前,用户可以通过继承的方式实现一些自定义逻辑
+            configure(); // 步骤二: 执行配置
 
-            buildState = BuildState.BUILDING;
+            buildState = BuildState.BUILDING; //构建状态,表示为构建阶段
 
-            O result = performBuild();
+            O result = performBuild(); //步骤三: 执行构建
 
-            buildState = BuildState.BUILT;
+            buildState = BuildState.BUILT;// 构建状态,表示构建完成
 
             return result;
         }

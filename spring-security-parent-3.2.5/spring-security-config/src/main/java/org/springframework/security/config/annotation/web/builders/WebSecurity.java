@@ -311,14 +311,23 @@ public final class WebSecurity extends
             securityFilterChains.add(new DefaultSecurityFilterChain(ignoredRequest));
         }
         for(SecurityBuilder<? extends SecurityFilterChain> securityFilterChainBuilder : securityFilterChainBuilders) {
+        	//构建filter链,就是在securityFilterChainBuilder.build()中完成的
             securityFilterChains.add(securityFilterChainBuilder.build());
         }
+        /*
+         * 将所有的filter链委托给 FilterChainProxy,这也是 springSecurityFilterChain这个bean的实例
+         * 这里还要特别强调一点 filter链是可以有多个的,每个filter链都包裹在SecurityFilterChain的实例中的,
+         * 而 SecurityFilterChain 中还有一个匹配方法,具体方法名为  boolean matches(HttpServletRequest request),
+         * 那么每次请求如何知道要选择哪个filter链的呢,那就是 SecurityFilterChain.matches的具体实现决定的
+         */
         FilterChainProxy filterChainProxy = new FilterChainProxy(securityFilterChains);
         if(httpFirewall != null) {
             filterChainProxy.setFirewall(httpFirewall);
         }
         filterChainProxy.afterPropertiesSet();
 
+        // 若 @EnableWebSecurity(debug=true) 中配置了debug=true,
+        // 则就将DebugFilter的实例包裹FilterChainProxy的实例,实现过滤器链的相关debug打印
         Filter result = filterChainProxy;
         if(debugEnabled) {
             logger.warn("\n\n" +

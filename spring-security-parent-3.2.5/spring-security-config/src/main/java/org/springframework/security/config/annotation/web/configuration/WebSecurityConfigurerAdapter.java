@@ -203,7 +203,7 @@ public abstract class WebSecurityConfigurerAdapter implements WebSecurityConfigu
         http.setSharedObject(ApplicationContext.class, context);
         http.setSharedObject(ContentNegotiationStrategy.class, contentNegotiationStrategy);
         http.setSharedObject(AuthenticationTrustResolver.class, trustResolver);
-        if(!disableDefaults) {
+        if(!disableDefaults) { //初始化security 默认的配置
             http
                 .csrf().and()
                 .addFilter(new WebAsyncManagerIntegrationFilter())
@@ -217,7 +217,7 @@ public abstract class WebSecurityConfigurerAdapter implements WebSecurityConfigu
                 .apply(new DefaultLoginPageConfigurer<HttpSecurity>()).and()
                 .logout();
         }
-        configure(http);
+        configure(http);// 初始化用户自定义的security相关配置
         return http;
     }
 
@@ -310,9 +310,9 @@ public abstract class WebSecurityConfigurerAdapter implements WebSecurityConfigu
     }
 
     public void init(final WebSecurity web) throws Exception {
-        final HttpSecurity http = getHttp();
+        final HttpSecurity http = getHttp(); //初始化系统默认的security配置和用户自定义的security配置
         web
-            .addSecurityFilterChainBuilder(http)
+            .addSecurityFilterChainBuilder(http) //向HttpSecurity中添加securityFilter链中,
             .postBuildAction(new Runnable() {
                 public void run() {
                     FilterSecurityInterceptor securityInterceptor = http.getSharedObject(FilterSecurityInterceptor.class);
