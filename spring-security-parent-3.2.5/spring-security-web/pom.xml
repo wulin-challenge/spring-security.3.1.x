@@ -47,7 +47,7 @@
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-expression</artifactId>
-      <version>3.2.12-SNAPSHOT</version>
+      <version>5.2.21.RELEASE</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
