@@ -342,7 +342,7 @@
     <dependency>
       <groupId>org.springframework.security</groupId>
       <artifactId>spring-security-cas</artifactId>
-      <version>3.2.5-SNAPSHOT</version>
+      <version>4.2.13.RELEASE</version>
       <scope>test</scope>
     </dependency>
     <dependency>
